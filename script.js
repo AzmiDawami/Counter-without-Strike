@@ -1,3 +1,4 @@
+// script.js
 let counters = [];
 let searchQuery = '';
 
@@ -11,6 +12,7 @@ const clearSearchBtn = document.getElementById('clear-search-btn');
 const searchError = document.getElementById('search-error');
 
 const fabAdd = document.getElementById('fab-add');
+const fabTheme = document.getElementById('fab-theme');
 const addModal = document.getElementById('add-modal');
 const modalTitleInput = document.getElementById('modal-title-input');
 const modalError = document.getElementById('modal-error');
@@ -32,6 +34,13 @@ const ICONS = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Inisialisasi Tema (Dark Mode / Light Mode)
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
+
+    // Inisialisasi Counter Data
     const saved = localStorage.getItem('my_advanced_counters');
     if (saved) {
         counters = JSON.parse(saved);
@@ -43,6 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
         saveToLocalStorage();
     }
     render();
+});
+
+// Dark Mode Toggle Logic
+fabTheme.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
 
 function saveToLocalStorage() {
