@@ -1,4 +1,4 @@
-# Counter-without-Strike
+# Counter (without) Strike
 Bukan nama game, melainkan aplikasi penghitung sederhana yang berbasis website
 
 # 🚀 Panduan Penggunaan
@@ -12,7 +12,7 @@ Bukan nama game, melainkan aplikasi penghitung sederhana yang berbasis website
 Atau anda juga bisa membukanya [di sini](https://azmidawami.github.io/Counter-without-Strike/)
 
 ## 2. Cara Menggunakan Fitur
-Menambah Counter Baru
+### Menambah Counter Baru
 
 - Klik tombol + (Floating Action Button) di pojok kanan bawah.
 
