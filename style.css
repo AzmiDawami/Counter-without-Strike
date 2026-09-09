@@ -1,0 +1,416 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    padding: 20px 15px;
+    min-height: 100vh;
+    position: relative;
+}
+
+.container {
+    width: 100%;
+    max-width: 840px;
+    padding-bottom: 90px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+header h1 {
+    color: #2c3e50;
+    margin-bottom: 6px;
+    font-size: 2.2rem;
+}
+
+header p {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+}
+
+/* --- Search Bar & Clear Button --- */
+.search-section {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.search-box {
+    display: flex;
+    gap: 8px;
+}
+
+.search-input-wrapper {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.search-input-wrapper input {
+    width: 100%;
+    padding: 12px 40px 12px 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+    background: #fff;
+}
+
+.search-input-wrapper input:focus {
+    border-color: #3498db;
+}
+
+.search-input-wrapper input.input-error {
+    border-color: #e74c3c;
+}
+
+.clear-btn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #95a5a6;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.clear-btn:hover {
+    color: #e74c3c;
+    background-color: #f1f2f6;
+}
+
+.clear-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.search-box button#search-btn {
+    padding: 12px 24px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.search-box button#search-btn:hover:not(:disabled) {
+    background-color: #2980b9;
+}
+
+.search-box button#search-btn:disabled {
+    background-color: #bdc3c7;
+    color: #7f8c8d;
+    cursor: not-allowed;
+    opacity: 0.6;
+    box-shadow: none;
+}
+
+.error-msg {
+    color: #e74c3c;
+    font-size: 0.85rem;
+    margin-top: 6px;
+    display: none;
+    font-weight: 500;
+}
+
+.error-msg.visible {
+    display: block;
+}
+
+/* --- Grid Layout Counter --- */
+.counter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+}
+
+.counter-card {
+    background: white;
+    padding: 18px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #eef2f5;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.counter-card:hover {
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+.counter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 8px;
+    margin-bottom: 12px;
+    min-height: 38px;
+}
+
+.counter-title-display {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #34495e;
+    text-align: left;
+    flex: 1;
+    word-break: break-word;
+}
+
+.counter-title-input {
+    flex: 1;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 4px 8px;
+    border: 2px solid #3498db;
+    border-radius: 6px;
+    outline: none;
+    color: #2c3e50;
+    width: 100%;
+}
+
+.counter-action-btns {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.icon-btn:active {
+    transform: scale(0.92);
+}
+
+.icon-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.btn-edit svg { stroke: #7f8c8d; }
+.btn-edit:hover { background-color: #edf2f7; }
+.btn-edit:hover svg { stroke: #2c3e50; }
+
+.btn-delete svg { stroke: #e74c3c; }
+.btn-delete:hover { background-color: #fceae8; }
+
+.btn-save svg { stroke: #2ecc71; }
+.btn-save:hover { background-color: #e8f8f5; }
+
+.btn-cancel svg { stroke: #e74c3c; }
+.btn-cancel:hover { background-color: #fceae8; }
+
+.counter-value {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 10px 0 15px 0;
+}
+
+.counter-controls {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+.btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.1s, opacity 0.2s;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn-decrement { background-color: #e74c3c; color: white; }
+.btn-reset { background-color: #95a5a6; color: white; font-size: 0.85rem; flex: 0.8; }
+.btn-increment { background-color: #2ecc71; color: white; }
+.btn:hover { opacity: 0.9; }
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    background: white;
+    border-radius: 12px;
+    border: 2px dashed #cbd5e1;
+    color: #64748b;
+    font-size: 1rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Floating Action Button (+) */
+.fab-add {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: #3498db;
+    color: white;
+    font-size: 32px;
+    font-weight: 300;
+    border: none;
+    box-shadow: 0 6px 16px rgba(52, 152, 219, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+    z-index: 99;
+}
+
+.fab-add:hover {
+    background-color: #2980b9;
+    transform: scale(1.08);
+}
+
+.fab-add:active {
+    transform: scale(0.95);
+}
+
+/* --- Modal Base Layout --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 15px;
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-card {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transform: translateY(0);
+    animation: slideUp 0.2s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(15px); }
+    to { transform: translateY(0); }
+}
+
+.modal-card h3 {
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.modal-card p {
+    color: #64748b;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+.modal-card input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.modal-card input:focus {
+    border-color: #3498db;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-actions button {
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.btn-modal-cancel { background: #edf2f7; color: #4a5568; }
+.btn-modal-cancel:hover { background: #e2e8f0; }
+.btn-modal-save { background: #3498db; color: white; }
+.btn-modal-save:hover { background: #2980b9; }
+
+/* Custom Action Styles for Confirm Modal */
+.btn-modal-danger { background: #e74c3c; color: white; }
+.btn-modal-danger:hover { background: #c0392b; }
+
+.confirm-single-btn #confirm-cancel-btn {
+    display: none;
+}
+
+/* Mobile Media Queries */
+@media (max-width: 480px) {
+    body { padding: 15px 10px; }
+    header h1 { font-size: 1.8rem; }
+    header p { font-size: 0.85rem; }
+    .counter-grid { grid-template-columns: 1fr; }
+    .fab-add { bottom: 20px; right: 20px; width: 52px; height: 52px; font-size: 28px; }
+    .search-box button#search-btn { padding: 12px 16px; }
+}

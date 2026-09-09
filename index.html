@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter (without) Strike</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Counter (without) Strike</h1>
+            <p>Bukan nama game, melainkan aplikasi penghitung sederhana.</p>
+        </header>
+
+        <!-- Bar Pencarian -->
+        <div class="search-section">
+            <div class="search-box">
+                <div class="search-input-wrapper">
+                    <input type="text" id="search-input" placeholder="Cari nama counter..." autocomplete="off">
+                    <!-- Tombol Silang untuk Clear Search -->
+                    <button id="clear-search-btn" class="clear-btn hidden" title="Bersihkan pencarian">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <button id="search-btn" disabled>Cari</button>
+            </div>
+            <div id="search-error" class="error-msg">Kolom pencarian harus diisi!</div>
+        </div>
+
+        <!-- Wadah Daftar Counter -->
+        <div id="counter-list" class="counter-grid"></div>
+
+        <!-- Pesan Kosong / Tidak Ditemukan -->
+        <div id="empty-state" class="empty-state hidden">
+            <p id="empty-state-text">Belum ada counter. Klik tombol + di pojok kanan bawah untuk menambah!</p>
+        </div>
+    </div>
+
+    <!-- Tombol Floating Action Button (+) di Pojok Kanan Bawah -->
+    <button id="fab-add" class="fab-add" title="Tambah Counter Baru">+</button>
+
+    <!-- Modal Form Tambah Counter Baru -->
+    <div id="add-modal" class="modal-overlay hidden">
+        <div class="modal-card">
+            <h3>Tambah Counter Baru</h3>
+            <p>Masukkan nama counter yang ingin Anda buat:</p>
+            <input type="text" id="modal-title-input" placeholder="Misal: Gelas Kopi Hari Ini..." maxlength="30" autocomplete="off">
+            <div id="modal-error" class="error-msg">Nama counter tidak boleh kosong!</div>
+            <div class="modal-actions">
+                <button id="modal-cancel-btn" class="btn-modal-cancel">Batal</button>
+                <button id="modal-save-btn" class="btn-modal-save">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Custom (Menggantikan confirm/alert bawaan) -->
+    <div id="confirm-modal" class="modal-overlay hidden">
+        <div class="modal-card confirm-card">
+            <h3 id="confirm-title">Konfirmasi</h3>
+            <p id="confirm-message">Apakah Anda yakin?</p>
+            <div class="modal-actions">
+                <button id="confirm-cancel-btn" class="btn-modal-cancel">Batal</button>
+                <button id="confirm-ok-btn" class="btn-modal-danger">Ya, Lanjutkan</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
