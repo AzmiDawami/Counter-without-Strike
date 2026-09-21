@@ -9,7 +9,7 @@ Bukan nama game, melainkan aplikasi penghitung sederhana yang berbasis website
 - Pastikan file index.html, style.css, dan script.js berada dalam satu folder yang sama.
 
 - Buka file index.html menggunakan browser pilihan Anda (Chrome, Firefox, Edge, Safari, dll).
-Atau anda juga bisa membukanya [di sini](https://azmidawami.github.io/Counter-without-Strike/)
+Atau anda juga bisa membukanya [di sini](https://counter-without-strike.netlify.app/)
 
 ## 2. Cara Menggunakan Fitur
 ### Menambah Counter Baru
